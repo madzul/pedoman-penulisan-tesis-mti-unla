@@ -30,7 +30,7 @@ function runs(text, base = {}) {
 
 const P = (text, o = {}) => new Paragraph({
   children: runs(text, o.run || {}),
-  alignment: o.align || AlignmentType.LEFT,
+  alignment: o.align || AlignmentType.JUSTIFIED,
   spacing: { line: o.line || LINE15, before: 0, after: o.after ?? 360 },
   indent: o.indent,
   keepNext: o.keepNext,
@@ -78,7 +78,7 @@ function list(items, kind = 'num', o = {}) {
     return new Paragraph({
       children: runs(t),
       numbering: { reference: kind === 'num' ? 'angka' : kind === 'alpha' ? 'huruf' : 'butir', level: lvl, instance: inst },
-      alignment: AlignmentType.LEFT,
+      alignment: AlignmentType.JUSTIFIED,
       spacing: { line: o.line || LINE15, before: 0, after: 0 },
     });
   }).concat(o.noGap ? [] : [new Paragraph({ children: [], spacing: { after: 0, line: 240 } })]);
@@ -87,7 +87,7 @@ function list(items, kind = 'num', o = {}) {
 // pustaka with hanging indent 1,27 cm, single spaced
 const REF = (text, o = {}) => new Paragraph({
   children: runs(text),
-  alignment: AlignmentType.LEFT,
+  alignment: AlignmentType.JUSTIFIED,
   spacing: { line: LINE1, before: 0, after: o.after ?? 120 },
   indent: { left: 720 + (o.left || 0), hanging: 720 },
 });
@@ -124,7 +124,7 @@ function table(rows, widths, o = {}) {
 
 const caption = (text, o = {}) => new Paragraph({
   children: runs(text),
-  alignment: o.long ? AlignmentType.LEFT : AlignmentType.CENTER,
+  alignment: o.long ? AlignmentType.JUSTIFIED : AlignmentType.CENTER,
   indent: o.long ? { left: o.hang || 1418, hanging: o.hang || 1418 } : undefined,
   tabStops: o.long ? [{ type: TabStopType.LEFT, position: o.hang || 1418 }] : undefined,
   spacing: { line: LINE1, before: o.before ?? 120, after: o.after ?? 240 },
@@ -142,7 +142,7 @@ function img(file, wPx, hPx, o = {}) {
 const blank = (n = 1, line = LINE1) => Array.from({ length: n }, () => new Paragraph({ children: [], spacing: { line, before: 0, after: 0 } }));
 const note = (text) => new Paragraph({
   children: runs(text, { size: 20, color: '555555' }),
-  alignment: AlignmentType.LEFT,
+  alignment: AlignmentType.JUSTIFIED,
   spacing: { line: LINE1, before: 120, after: 120 },
 });
 const boxNote = (lines) => new Table({
@@ -151,7 +151,7 @@ const boxNote = (lines) => new Table({
     width: { size: TEXT_W, type: WidthType.DXA }, borders,
     shading: { fill: 'F2F2F2', type: ShadingType.CLEAR, color: 'auto' },
     margins: { top: 100, bottom: 100, left: 140, right: 140 },
-    children: lines.map((l) => new Paragraph({ children: runs(l, { size: 22 }), alignment: AlignmentType.LEFT, spacing: { line: LINE1, after: 80 } })),
+    children: lines.map((l) => new Paragraph({ children: runs(l, { size: 22 }), alignment: AlignmentType.JUSTIFIED, spacing: { line: LINE1, after: 80 } })),
   })] })],
 });
 

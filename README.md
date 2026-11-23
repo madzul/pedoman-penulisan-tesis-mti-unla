@@ -38,6 +38,8 @@ npm install docx
 ./run.sh        # menghasilkan final.docx dan final.pdf
 ```
 
+Naskah pedoman ditulis rata kiri-kanan dengan pemenggalan kata. Karena Word tidak memiliki pola pemenggalan bahasa Indonesia, `run.sh` menyisipkan tanda pemenggal opsional dengan `sumber/pemenggal/pemenggal_id.py` (salinan dari paket proofing `madzul/autohyphen-ejaan-id`). Setelah menyunting `.docx` secara langsung, jalankan ulang pemenggal itu pada berkas hasil suntingan.
+
 Penyuntingan kecil dapat langsung dilakukan pada berkas `.docx` di Word. Saat dibuka, pilih **Yes** bila Word meminta memperbarui *field* agar daftar isi dan nomor halaman disegarkan.
 
 ## Masukan
