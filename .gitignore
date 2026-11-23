@@ -1,0 +1,8 @@
+node_modules/
+sumber/raw.docx
+sumber/pass*.docx
+sumber/pass*.pdf
+sumber/final.docx
+sumber/final.pdf
+~$*
+.DS_Store
